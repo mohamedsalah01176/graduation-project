@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="./home.css">
+        <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/css/all.min.css">
+    <title>Face Recognition Based Attendance System</title>
+</head>
+
+<body>
+    <nav class=" p-2">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo fs-1 fw-700 text-danger     "><img class="  rounded-circle" src="../R (2).jpeg" alt="image"></div>
+            <ul  class="d-flex list-unstyled ms-5 gap-3">
+                <li class="fs-5"><a class="text-decoration-none text-white" href="./home.html">home</a></li>
+                <li class="fs-5" ><a class="text-decoration-none text-white" href="./about.htm">about</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class='mt-3 text-center'>
+        <h1 class="title">Face Recognition Based
+            Attendance System</h1>
+    </div>
+
+    {% if mess%}
+    <p class="par1 text-center" >{{ mess }}</p>
+    {% endif %}
+
+    <div class="conta row text-center" >
+
+        <div class="atten col"
+            >
+            <h2 class="title_atten">Today's
+                Attendance <i class="material-icons">assignment</i></h2>
+            <a class="link" href="/start">
+                <button
+                    type='submit' class='btn btn-primary'>Take Attendance <i
+                        class="material-icons">beenhere</i></button>
+            </a>
+            <table >
+                <tr>
+                    <td><b>S No</b></td>
+                    <td><b>Name</b></td>
+                    <td><b>ID</b></td>
+                    <td><b>Time</b></td>
+                </tr>
+                {% if l %}
+
+                {% for i in range(l) %}
+                <tr>
+                    <td>{{ i+1 }}</td>
+                    <td>{{ names[i] }}</td>
+                    <td>{{ rolls[i] }}</td>
+                    <td>{{ times[i] }}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+
+        </div>
+
+        <div class="user col">
+            <form action='/add' method="POST" enctype="multipart/form-data">
+                <h2 class="title_user">Add
+                    New User <i class="material-icons">control_point_duplicate</i></h2>
+                <label  class="fs-5"><b>Enter New User Name*</b></label>
+                <br>
+                <input placeholder="enter your User Emial" type="text" id="newusername" name='newusername' class="input" required >
+                <br>
+                <label class="fs-5"><b>Enter New User Id*</b></label>
+                <br>
+                <input placeholder="enter your Id" type="number" id="newusereid" name='newuserid'class="input" required>
+                <br>
+                <button type='submit' class='btn2 btn btn-dark'>Add
+                    New User
+                </button>
+                <br>
+                <h5 class="p-3"><i>Total Users in Database: {{totalreg}}</i></h5>
+            </form>
+        </div>
+
+    </div>
+
+    <footer class="py-3">
+        <div class="container d-flex justify-content-around align-items-center">
+            <div class="about p-2 ">
+                <div class="text-white ">Doctor: <span class="span">Rashad</span> </div>
+                <div class="text-white ">Front End Team: <span class="span">Mohamed Salah || Mohamed Nassar || Mohamed Barakat</span></div>
+                <div class="text-white ">Back End Team: <span class="span">Mohamed Alaa || Mohamed taha</span></div>
+            </div>
+            <div class="conectus text-white ">
+                <div><i class="fa-solid fa-phone"></i> 01096116672</div>
+                <div class="d-flex align-items-center gap-1"><i class="fa-solid fa-envelope "></i> ragmd1234@gmail.com</div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
